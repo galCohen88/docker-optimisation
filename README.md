@@ -5,6 +5,23 @@ Here I suggest a neat way of creating lean python docker images, using multistag
  
 As you can see in the .dockerfile, we are using AS statement in the first FROM statement, this is aliasing the first image with name base
  
-To use the dependencies without reinstalling the compilers in the target image, we use pip wheel archive. 
+ ```
+ FROM python:2.7-alpine as base
+ ```
+ 
+In this image we will compile the projects dependencies, and create wheel files to copy to final image
+ 
+ ```
+ COPY --from=base /svc /svc
+ ```
+ 
+ after copying installing the wheels in the target image
+ 
+ ```
+ RUN pip install --no-index --find-links=/shadow_reporting/wheels -r requirements.txt
+ ```
+ 
+ 
+And that's it
  
 Have a good one!
