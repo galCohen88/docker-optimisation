@@ -1,5 +1,4 @@
-# docker-optimisation
-Create multistage builds using dockerfile and python
+# Reduce docker image size using multistage build for python
 
 Here I suggest a neat way of creating lean python docker images, using multistage build and pip wheel archive
  
