@@ -11,9 +11,10 @@ As you can see in the .dockerfile, we are using AS statement in the first FROM s
 In this image we will compile the projects dependencies, and create wheel files to copy to final image
  
  ```
+ RUN pip install wheel && pip wheel . --wheel-dir=/svc/wheels
  COPY --from=base /svc /svc
  ```
- 
+
  after copying installing the wheels in the target image
  
  ```
